@@ -110,6 +110,7 @@
             but_div.TabIndex = 6;
             but_div.Text = "÷";
             but_div.UseVisualStyleBackColor = true;
+            but_div.Click += but_div_Click;
             // 
             // Del_but
             // 
@@ -131,6 +132,7 @@
             but_mul.TabIndex = 10;
             but_mul.Text = "×";
             but_mul.UseVisualStyleBackColor = true;
+            but_mul.Click += but_mul_Click;
             // 
             // but_9
             // 
@@ -178,6 +180,7 @@
             but_mi.TabIndex = 14;
             but_mi.Text = "-";
             but_mi.UseVisualStyleBackColor = true;
+            but_mi.Click += but_mi_Click;
             // 
             // but_6
             // 

@@ -112,6 +112,10 @@ namespace SimpleCalculator
         private void but_eq_Click(object sender, EventArgs e)
         {
             num2 = int.Parse(result_txt.Text);
+            if(num2 == 0)
+            {
+                process_txt.Text += "0";
+            }
             result_txt.Clear();
             process_txt.Text += " = ";
             if (sign == "+")
@@ -120,6 +124,56 @@ namespace SimpleCalculator
                 process_txt.Text += result.ToString();
                 result_txt.Text += result.ToString();
             }
+            else if (sign == "-")
+            {
+                result = num1 - num2;
+                process_txt.Text += result.ToString();
+                result_txt.Text += result.ToString();
+            }
+            else if (sign == "¡¿")
+            {
+                result = num1 * num2;
+                process_txt.Text += result.ToString();
+                result_txt.Text += result.ToString();
+            }
+            else if (sign == "¡À")
+            {
+                if (num2 != 0)
+                {
+                    result = num1 / num2;
+                    process_txt.Text += result.ToString();
+                    result_txt.Text += result.ToString();
+                }
+                else
+                {
+                    process_txt.Text += "Error: Division by zero";
+                    result_txt.Text = "Error";
+                }
+            }
+        }
+
+        private void but_mi_Click(object sender, EventArgs e)
+        {
+            sign = "-";
+            num1 = int.Parse(result_txt.Text);
+            result_txt.Text = "0";
+            process_txt.Text += " - ";
+        }
+
+        private void but_mul_Click(object sender, EventArgs e)
+        {
+            sign = "¡¿";
+            num1 = int.Parse(result_txt.Text);
+            result_txt.Text = "0";
+            process_txt.Text += " ¡¿ ";
+        }
+
+        private void but_div_Click(object sender, EventArgs e)
+        {
+            sign = "¡À";
+            num1 = int.Parse(result_txt.Text);
+            result_txt.Text = "0";
+            process_txt.Text += " ¡À ";
         }
     }
 }
