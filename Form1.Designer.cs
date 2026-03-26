@@ -89,6 +89,7 @@
             CE_but.TabIndex = 3;
             CE_but.Text = "CE";
             CE_but.UseVisualStyleBackColor = true;
+            CE_but.Click += CE_but_Click;
             // 
             // C_but
             // 
@@ -99,6 +100,7 @@
             C_but.TabIndex = 4;
             C_but.Text = "C";
             C_but.UseVisualStyleBackColor = true;
+            C_but.Click += C_but_Click;
             // 
             // but_div
             // 
@@ -121,6 +123,7 @@
             Del_but.TabIndex = 5;
             Del_but.Text = "Del";
             Del_but.UseVisualStyleBackColor = true;
+            Del_but.Click += Del_but_Click;
             // 
             // but_mul
             // 

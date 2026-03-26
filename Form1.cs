@@ -5,6 +5,7 @@ namespace SimpleCalculator
 
         int num1 = 0, num2 = 0, result = 0;
         string sign = "";
+        bool isOperatorClicked = false;
 
         public Form1()
         {
@@ -13,6 +14,18 @@ namespace SimpleCalculator
 
         private void but_0_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
+            {
+                if (result_txt.Text == "0") result_txt.Text = "0";
+                else result_txt.Text += "0";
+                if (process_txt.Text == "0") process_txt.Text = "0";
+                else process_txt.Text += "0";
+            }
             if (result_txt.Text != "0")
             {
                 result_txt.Text += "0";
@@ -22,6 +35,12 @@ namespace SimpleCalculator
 
         private void but_1_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "1";
             else result_txt.Text += "1";
 
@@ -31,6 +50,12 @@ namespace SimpleCalculator
 
         private void but_2_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "2";
             else result_txt.Text += "2";
 
@@ -40,6 +65,12 @@ namespace SimpleCalculator
 
         private void but_3_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "3";
             else result_txt.Text += "3";
 
@@ -49,6 +80,12 @@ namespace SimpleCalculator
 
         private void but_4_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "4";
             else result_txt.Text += "4";
 
@@ -58,6 +95,12 @@ namespace SimpleCalculator
 
         private void but_5_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "5";
             else result_txt.Text += "5";
 
@@ -67,6 +110,12 @@ namespace SimpleCalculator
 
         private void but_6_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "6";
             else result_txt.Text += "6";
 
@@ -76,6 +125,12 @@ namespace SimpleCalculator
 
         private void but_7_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "7";
             else result_txt.Text += "7";
 
@@ -85,6 +140,12 @@ namespace SimpleCalculator
 
         private void but_8_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "8";
             else result_txt.Text += "8";
 
@@ -94,6 +155,12 @@ namespace SimpleCalculator
 
         private void but_9_Click(object sender, EventArgs e)
         {
+            if (isOperatorClicked)
+            {
+                result_txt.Clear();
+                isOperatorClicked = false;
+            }
+
             if (result_txt.Text == "0") result_txt.Text = "9";
             else result_txt.Text += "9";
 
@@ -105,14 +172,14 @@ namespace SimpleCalculator
         {
             sign = "+";
             num1 = int.Parse(result_txt.Text);
-            result_txt.Text = "0";
             process_txt.Text += " + ";
+            isOperatorClicked = true;
         }
 
         private void but_eq_Click(object sender, EventArgs e)
         {
             num2 = int.Parse(result_txt.Text);
-            if(num2 == 0)
+            if (num2 == 0)
             {
                 process_txt.Text += "0";
             }
@@ -156,7 +223,7 @@ namespace SimpleCalculator
         {
             sign = "-";
             num1 = int.Parse(result_txt.Text);
-            result_txt.Text = "0";
+            isOperatorClicked = true;
             process_txt.Text += " - ";
         }
 
@@ -164,7 +231,7 @@ namespace SimpleCalculator
         {
             sign = "¡¿";
             num1 = int.Parse(result_txt.Text);
-            result_txt.Text = "0";
+            isOperatorClicked = true;
             process_txt.Text += " ¡¿ ";
         }
 
@@ -172,8 +239,56 @@ namespace SimpleCalculator
         {
             sign = "¡À";
             num1 = int.Parse(result_txt.Text);
-            result_txt.Text = "0";
+            isOperatorClicked = true;
             process_txt.Text += " ¡À ";
+        }
+
+        private void CE_but_Click(object sender, EventArgs e)
+        {
+            result_txt.Text = "0";
+
+            if (!string.IsNullOrEmpty(process_txt.Text))
+            {
+                int lastSpaceIndex = process_txt.Text.LastIndexOf(' ');
+
+                if (lastSpaceIndex != -1)
+                {
+                    process_txt.Text = process_txt.Text.Substring(0, lastSpaceIndex + 1);
+                }
+                else
+                {
+                    process_txt.Text = "";
+                }
+            }
+        }
+
+        private void C_but_Click(object sender, EventArgs e)
+        {
+            num1 = 0;
+            num2 = 0;
+            result = 0;
+            sign = "";
+
+            result_txt.Text = "0";
+            process_txt.Text = "";
+        }
+
+        private void Del_but_Click(object sender, EventArgs e)
+        {
+            if (result_txt.Text.Length > 0)
+            {
+                result_txt.Text = result_txt.Text.Substring(0, result_txt.Text.Length - 1);
+
+                if (process_txt.Text.Length > 0)
+                {
+                    process_txt.Text = process_txt.Text.Substring(0, process_txt.Text.Length - 1);
+                }
+            }
+
+            if (result_txt.Text == "" || result_txt.Text == "Error")
+            {
+                result_txt.Text = "0";
+            }
         }
     }
 }
